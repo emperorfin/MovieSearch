@@ -25,7 +25,7 @@ data class Movie(
     var metascore: String,
     var imdbRating: String,
     var imdbVotes: String,
-    var imdbID: String,
+    var imdbId: String,
     var type: String,
     var dvd: String,
     var boxOffice: String,

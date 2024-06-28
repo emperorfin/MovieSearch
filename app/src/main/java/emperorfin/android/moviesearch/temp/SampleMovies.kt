@@ -37,7 +37,7 @@ object SampleMovies {
             metascore = "67",
             imdbRating = "7.6",
             imdbVotes = "762,391",
-            imdbID = "tt3896198",
+            imdbId = "tt3896198",
             type = "movie",
             dvd = "N/A",
             boxOffice = "$389,813,101",
@@ -51,42 +51,48 @@ object SampleMovies {
 
         movie = movie.copy(
             title = "Luca",
-            poster = "https://m.media-amazon.com/images/M/MV5BZTQyNTU0MDktYTFkYi00ZjNhLWE2ODctMzBkM2U1ZTk3YTMzXkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg"
+            poster = "https://m.media-amazon.com/images/M/MV5BZTQyNTU0MDktYTFkYi00ZjNhLWE2ODctMzBkM2U1ZTk3YTMzXkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SX300.jpg",
+            imdbId = "tt12801262"
         )
 
         movies.add(movie)
 
         movie = movie.copy(
             title = "Louis & Luca and the Snow Machine",
-            poster = "https://m.media-amazon.com/images/M/MV5BMjIxOTAwMjQwOF5BMl5BanBnXkFtZTgwMTQ5MDkzMzE@._V1_SX300.jpg"
+            poster = "https://m.media-amazon.com/images/M/MV5BMjIxOTAwMjQwOF5BMl5BanBnXkFtZTgwMTQ5MDkzMzE@._V1_SX300.jpg",
+            imdbId = "tt2769896"
         )
 
         movies.add(movie)
 
         movie = movie.copy(
             title = "Louis & Luca - The Big Cheese Race",
-            poster = "https://m.media-amazon.com/images/M/MV5BNjgwYjNlMWEtOTUwMS00ZWQyLWE2ZDAtNWZjZTgzNThkNzliXkEyXkFqcGdeQXVyNTI5NjIyMw@@._V1_SX300.jpg"
+            poster = "https://m.media-amazon.com/images/M/MV5BNjgwYjNlMWEtOTUwMS00ZWQyLWE2ZDAtNWZjZTgzNThkNzliXkEyXkFqcGdeQXVyNTI5NjIyMw@@._V1_SX300.jpg",
+            imdbId = "tt4970552"
         )
 
         movies.add(movie)
 
         movie = movie.copy(
             title = "Justice League: Throne of Atlantis",
-            poster = "https://m.media-amazon.com/images/M/MV5BMGYwYTBjYTEtODE1NS00OTA2LTk5ZTctM2I0ZWViMTc4NDljXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_SX300.jpg"
+            poster = "https://m.media-amazon.com/images/M/MV5BMGYwYTBjYTEtODE1NS00OTA2LTk5ZTctM2I0ZWViMTc4NDljXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_SX300.jpg",
+            imdbId = "tt3878542"
         )
 
         movies.add(movie)
 
         movie = movie.copy(
             title = "The Throne",
-            poster = "https://m.media-amazon.com/images/M/MV5BMjI1NjY5MDEzOV5BMl5BanBnXkFtZTgwODg2NTEwNzE@._V1_SX300.jpg"
+            poster = "https://m.media-amazon.com/images/M/MV5BMjI1NjY5MDEzOV5BMl5BanBnXkFtZTgwODg2NTEwNzE@._V1_SX300.jpg",
+            imdbId = "tt4010918"
         )
 
         movies.add(movie)
 
         movie = movie.copy(
             title = "Warcraft III: The Frozen Throne",
-            poster = "https://m.media-amazon.com/images/M/MV5BNTMwOGQzYjMtYTQ5MS00NjNmLTk4OTktMDljZDYzNjgwMjUzXkEyXkFqcGdeQXVyNjExODE1MDc@._V1_SX300.jpg"
+            poster = "https://m.media-amazon.com/images/M/MV5BNTMwOGQzYjMtYTQ5MS00NjNmLTk4OTktMDljZDYzNjgwMjUzXkEyXkFqcGdeQXVyNjExODE1MDc@._V1_SX300.jpg",
+            imdbId = "tt0372023"
         )
 
         movies.add(movie)

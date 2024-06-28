@@ -53,7 +53,8 @@ class NavigationActions(private val navController: NavHostController) {
     }
 
     fun navigateBack() {
-        navController.popBackStack()
+//        navController.popBackStack() // Still works
+        navController.navigateUp()
     }
 
 }

@@ -15,6 +15,7 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import emperorfin.android.moviesearch.ui.navigation.Destinations.ROUTE_MOVIES
 import emperorfin.android.moviesearch.ui.navigation.Destinations.ROUTE_MOVIE_DETAILS
 import emperorfin.android.moviesearch.ui.navigation.ScreenArgs.SCREEN_MOVIE_DETAILS_IMDBID
+import emperorfin.android.moviesearch.ui.screen.moviedetails.MovieDetailsScreen
 import emperorfin.android.moviesearch.ui.screen.movies.MoviesScreen
 
 
@@ -57,10 +58,10 @@ fun NavGraph(
 
                 val imdbId: String = backStackEntry.arguments?.getString(SCREEN_MOVIE_DETAILS_IMDBID)!!
 
-//            MovieDetailsScreen(
-//                navigationActions = navActions,
-//                imdbId = imdbId,
-//            )
+                MovieDetailsScreen(
+                    navigationActions = navActions,
+                    imdbId = imdbId,
+                )
             }
         }
     }

@@ -1,6 +1,7 @@
 package emperorfin.android.moviesearch.ui.screen.movies
 
 import android.content.Context
+import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.background
@@ -55,6 +56,7 @@ fun MoviesScreen(
 
         Content(
             modifier = Modifier.padding(paddingValues),
+            navigationActions = navigationActions
         )
 
         // Check for SnackBar messages to display on the screen
@@ -84,7 +86,9 @@ fun MoviesScreen(
 
 @Composable
 private fun Content(
-    modifier: Modifier
+    modifier: Modifier,
+    navigationActions: NavigationActions?,
+    context: Context = LocalContext.current,
 ) {
     val movies = SampleMovies.getMovies()
 
@@ -101,7 +105,16 @@ private fun Content(
 
             MoviePoster(
                 movie = movie,
-//                selectPoster = selectPoster
+                onClick = {
+//                    navigationActions?.navigateToMovieDetailsScreen(movie.imdbID) // Works
+                    navigationActions?.navigateToMovieDetailsScreen(it)
+
+//                    Toast.makeText(
+//                        context,
+//                        it, // Or movie.imdbId
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+                }
             )
         }
 

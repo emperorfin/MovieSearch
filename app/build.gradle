@@ -145,6 +145,9 @@ dependencies {
     // compose compatibles
     implementation "com.github.skydoves:orchestra-balloon:1.1.1"
 
+    // whatIf
+    implementation "com.github.skydoves:whatif:1.1.0"
+
     implementation 'androidx.compose.foundation:foundation-layout'
 //    implementation "androidx.compose.foundation:foundation-layout"
 //    implementation "androidx.compose.foundation:foundation-layout:1.1.0-beta03"

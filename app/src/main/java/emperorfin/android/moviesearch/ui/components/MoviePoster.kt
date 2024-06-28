@@ -38,7 +38,7 @@ import emperorfin.android.moviesearch.temp.Movie
 @Composable
 fun MoviePoster(
     movie: Movie,
-//    selectPoster: (MainScreenHomeTab, Long) -> Unit,
+    onClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -47,7 +47,7 @@ fun MoviePoster(
             .height(290.dp)
             .clickable(
                 onClick = {
-//                    selectPoster(MainScreenHomeTab.MOVIE, movie.id)
+                    onClick(movie.imdbId)
                 }
             ),
         color = MaterialTheme.colorScheme.onBackground
