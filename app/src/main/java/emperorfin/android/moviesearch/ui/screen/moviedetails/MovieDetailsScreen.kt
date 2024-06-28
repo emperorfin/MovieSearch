@@ -9,11 +9,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -30,6 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.palette.graphics.Palette
+import com.google.accompanist.flowlayout.FlowRow
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.palette.BitmapPalette
 import com.skydoves.whatif.whatIfNotNullOrEmpty
@@ -41,6 +44,7 @@ import emperorfin.android.moviesearch.ui.components.AppBarWithArrow
 import emperorfin.android.moviesearch.ui.components.NetworkImage
 import emperorfin.android.moviesearch.ui.components.RatingBar
 import emperorfin.android.moviesearch.ui.navigation.NavigationActions
+import emperorfin.android.moviesearch.ui.theme.Purple40
 import emperorfin.android.moviesearch.ui.theme.background
 
 
@@ -192,6 +196,8 @@ private fun MovieDetailsSummary(
     movie: Movie
 ) {
 
+    val genre: List<String> = movie.genre.split(',')
+
     Column {
 
         Spacer(modifier = Modifier.height(23.dp))
@@ -222,6 +228,38 @@ private fun MovieDetailsSummary(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 15.dp)
+        )
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+        FlowRow {
+
+            genre.forEach {
+
+                Keyword(it.trim())
+            }
+        }
+    }
+}
+
+@Composable
+private fun Keyword(keyword: String) {
+    Surface(
+        shape = RoundedCornerShape(32.dp),
+//        elevation = 8.dp,
+        shadowElevation = 8.dp,
+        color = Purple40,
+        modifier = Modifier.padding(8.dp)
+    ) {
+
+        Text(
+            text = keyword,
+//            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodySmall,
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(horizontal = 8.dp, vertical = 4.dp)
         )
     }
 }
