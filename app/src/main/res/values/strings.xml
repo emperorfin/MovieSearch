@@ -3,4 +3,6 @@
 
     <string name="ratings">Ratings</string>
     <string name="summary">Summary</string>
+    <string name="content_description_search_leading_icon">Search Icon</string>
+    <string name="label_search_movies">Search movies</string>
 </resources>

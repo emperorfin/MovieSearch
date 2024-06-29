@@ -5,26 +5,42 @@ import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.R
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 //import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 //import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.statusBarsPadding
 import emperorfin.android.moviesearch.ui.components.AppBar
 import emperorfin.android.moviesearch.ui.components.MoviePoster
 import emperorfin.android.moviesearch.ui.navigation.NavigationActions
 import emperorfin.android.moviesearch.temp.SampleMovies
+import emperorfin.android.moviesearch.ui.components.SearchField
 
 
 /*
@@ -98,8 +114,31 @@ private fun Content(
         state = rememberLazyGridState(),
         modifier = modifier
             .statusBarsPadding()
+//                    .offset(0.dp, (-58).dp)
             .background(MaterialTheme.colorScheme.background)
     ) {
+
+        item(
+            span = {
+                GridItemSpan(
+                    maxLineSpan
+                )
+            }
+        ) {
+            SearchField(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                searchInput = "",
+                onSearchInputChanged = {},
+                onSearchClicked = {
+                    Toast.makeText(
+                        context,
+                        "Search clicked.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            )
+        }
 
         itemsIndexed(movies) { index, movie ->
 
