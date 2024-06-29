@@ -5,4 +5,6 @@
     <string name="summary">Summary</string>
     <string name="content_description_search_leading_icon">Search Icon</string>
     <string name="label_search_movies">Search movies</string>
+    <string name="content_description_error_message">Error message</string>
+    <string name="btn_retry">Retry</string>
 </resources>

@@ -12,3 +12,4 @@ val Pink40 = Color(0xFF7D5260)
 
 val shimmerHighLight = Color(0xA3C2C2C2)
 val background = Color(0xFF2B292B)
+val teal200 = Color(0xFF03DAC5)
