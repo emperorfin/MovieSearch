@@ -7,4 +7,34 @@
     <string name="label_search_movies">Search movies</string>
     <string name="content_description_error_message">Error message</string>
     <string name="btn_retry">Retry</string>
+
+    <string name="error_memory_movie_list_not_available">Movie list not available memory error.</string>
+    <string name="error_local_movie_list_not_available">Movie list not available local error.</string>
+    <string name="error_remote_movie_list_not_available">Movie list not available remote error.</string>
+    <string name="error_memory_movie">Movie memory error.</string>
+    <string name="error_local_movie">Movie local error.</string>
+    <string name="error_remote_movie">Movie remote error.</string>
+    <string name="error_memory_get_movie">Get movie memory error.</string>
+    <string name="error_local_get_movie">Get movie local error.</string>
+    <string name="error_remote_get_movie">Get movie remote error.</string>
+    <string name="error_memory_insert_movie">Insert movie memory error.</string>
+    <string name="error_local_insert_movie">Insert movie local error.</string>
+    <string name="error_remote_insert_movie">Insert movie remote error.</string>
+    <string name="error_memory_update_movie">Update movie memory error.</string>
+    <string name="error_local_update_movie">Update movie local error.</string>
+    <string name="error_remote_update_movie">Update movie remote error.</string>
+    <string name="error_memory_delete_movie">Delete movie memory error.</string>
+    <string name="error_local_delete_movie">Delete movie local error.</string>
+    <string name="error_remote_delete_movie">Delete movie remote error.</string>
+    <string name="error_memory_non_existent_movie_data">Non existent movie data memory error.</string>
+    <string name="error_local_non_existent_movie_data">Non existent movie data local error.</string>
+    <string name="error_remote_non_existent_movie_data">Non existent movie data remote error.</string>
+    <string name="error_repository_get_movie">Get movie repository error.</string>
+    <string name="error_repository_insert_movie">Insert movie repository error.</string>
+    <string name="error_repository_delete_movie">Delete movie repository error.</string>
+
+    <string name="exception_occurred_remote">Remote exception occurred.</string>
+    <string name="error_cant_force_refresh_movies_remote_data_source_unavailable">Can\'t force movies refresh. Remote data source is unavailable.</string>
+    <string name="exception_occurred_local">Local exception occurred.</string>
+    <string name="error_fetching_from_remote_and_local">Error fetching from remote and local.</string>
 </resources>
