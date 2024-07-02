@@ -2,6 +2,7 @@ package emperorfin.android.moviesearch.di
 
 import android.content.Context
 import coil.ImageLoader
+import com.skydoves.sandwich.coroutines.CoroutinesResponseCallAdapterFactory
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -20,6 +21,7 @@ import emperorfin.android.moviesearch.domain.datalayer.datasource.MovieDataSourc
 import emperorfin.android.moviesearch.domain.datalayer.repository.IMovieRepository
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Qualifier
 import javax.inject.Singleton
@@ -118,11 +120,10 @@ object NetworkModule {
     fun provideRetrofit(okhHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okhHttpClient)
-//            .baseUrl(Api.BASE_URL)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
             .baseUrl(BuildConfig.OMDB_BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create())
+//            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
             .build()
     }
 

@@ -18,31 +18,31 @@ class MovieDataTransferObjectMapper @Inject constructor() {
         val imdbId: String = movie.imdbId
         val title: String = movie.title
         val year: String = movie.year
-        val rated: String = movie.rated
-        val released: String = movie.released
-        val runtime: String = movie.runtime
-        val genre: String = movie.genre
-        val director: String = movie.director
-        val writer: String = movie.writer
-        val actors: String = movie.actors
-        val plot: String = movie.plot
-        val language: String = movie.language
-        val country: String = movie.country
-        val awards: String = movie.awards
+        val rated: String? = movie.rated
+        val released: String? = movie.released
+        val runtime: String? = movie.runtime
+        val genre: String? = movie.genre
+        val director: String? = movie.director
+        val writer: String? = movie.writer
+        val actors: String? = movie.actors
+        val plot: String? = movie.plot
+        val language: String? = movie.language
+        val country: String? = movie.country
+        val awards: String? = movie.awards
         val poster: String = movie.poster
-        val metascore: String = movie.metascore
-        val imdbRating: String = movie.imdbRating
-        val imdbVotes: String = movie.imdbVotes
+        val metascore: String? = movie.metascore
+        val imdbRating: String? = movie.imdbRating
+        val imdbVotes: String? = movie.imdbVotes
         val type: String = movie.type
-        val dvd: String = movie.dvd
-        val boxOffice: String = movie.boxOffice
-        val production: String = movie.production
-        val website: String = movie.website
-        val response: String = movie.response
+        val dvd: String? = movie.dvd
+        val boxOffice: String? = movie.boxOffice
+        val production: String? = movie.production
+        val website: String? = movie.website
+        val response: String? = movie.response
 
         val ratings: MutableList<Rating> = mutableListOf()
 
-        movie.ratings.forEach {
+        movie.ratings?.forEach {
 
             val rating = Rating(
                 source = it.source,
@@ -78,7 +78,7 @@ class MovieDataTransferObjectMapper @Inject constructor() {
             production = production,
             website = website,
             response = response,
-            ratings = ratings
+            ratings = ratings.ifEmpty { null }
         )
     }
 

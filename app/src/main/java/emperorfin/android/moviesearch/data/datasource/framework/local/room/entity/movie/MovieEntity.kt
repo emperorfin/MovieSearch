@@ -70,7 +70,6 @@ data class MovieEntity(
     @ColumnInfo(name = COLUMN_INFO_RESPONSE)
     override val response: String,
     @ColumnInfo(name = COLUMN_INFO_RATINGS)
-    @TypeConverters(RatingsTypeConverter::class)
     override val ratings: List<Rating> = emptyList()
 ) : MovieEntityParams {
 

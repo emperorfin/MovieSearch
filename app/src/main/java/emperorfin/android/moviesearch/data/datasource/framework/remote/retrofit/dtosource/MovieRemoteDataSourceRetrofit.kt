@@ -1,5 +1,6 @@
 package emperorfin.android.moviesearch.data.datasource.framework.remote.retrofit.dtosource
 
+import android.util.Log
 import emperorfin.android.moviesearch.data.constant.StringConstants.ERROR_MESSAGE_INAPPROPRIATE_ARGUMENT_PASSED
 import emperorfin.android.moviesearch.data.constant.StringConstants.ERROR_MESSAGE_NOT_YET_IMPLEMENTED
 import emperorfin.android.moviesearch.data.datasource.framework.remote.retrofit.dto.movie.MovieDataTransferObject
@@ -22,6 +23,8 @@ import emperorfin.android.moviesearch.domain.uilayer.event.output.ResultData
 import emperorfin.android.moviesearch.domain.uilayer.event.output.movie.Params
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -52,7 +55,7 @@ data class MovieRemoteDataSourceRetrofit @Inject internal constructor(
 
                 return@withContext try {
 
-                    val response = movieDao.getMovies(
+                    val response = movieDao.getRemoteMovies(
                         search = params.title!!,
                     ) as Response<MovieSearchResponse>
 
@@ -91,8 +94,8 @@ data class MovieRemoteDataSourceRetrofit @Inject internal constructor(
 
                 return@withContext try {
 
-                    val response = movieDao.getMovie(
-                        omdbId = params.imdbId!!,
+                    val response = movieDao.getRemoteMovie(
+                        imdbId = params.imdbId!!,
                     ) as Response<MovieDetailsResponse>
 
                     withContext(mainDispatcher){

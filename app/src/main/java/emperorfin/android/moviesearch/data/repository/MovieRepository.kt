@@ -165,7 +165,7 @@ data class MovieRepository @Inject constructor(
             return ResultData.Error(
                 // TODO: Change GetMovieRemoteError to GetMovieRepositoryError and update
                 //  test cases too.
-                MovieFailure.GetMovieRemoteError(
+                MovieFailure.GetMovieRepositoryError(
                     message = R.string.error_cant_force_refresh_movies_remote_data_source_unavailable
                 )
             )

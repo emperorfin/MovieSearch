@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import emperorfin.android.moviesearch.data.datasource.framework.local.room.dao.MovieDao
 import emperorfin.android.moviesearch.data.datasource.framework.local.room.entity.movie.MovieEntity
@@ -34,6 +35,7 @@ import emperorfin.android.moviesearch.data.datasource.framework.local.room.entit
 import emperorfin.android.moviesearch.data.datasource.framework.local.room.entity.movie.MovieEntity.Companion.COLUMN_INFO_WRITER
 import emperorfin.android.moviesearch.data.datasource.framework.local.room.entity.movie.MovieEntity.Companion.COLUMN_INFO_YEAR
 import emperorfin.android.moviesearch.data.datasource.framework.local.room.entity.movie.MovieEntity.Companion.TABLE_NAME
+import emperorfin.android.moviesearch.data.datasource.framework.local.room.entity.movie.typeconverters.RatingsTypeConverter
 import emperorfin.android.moviesearch.data.util.SampleData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -47,6 +49,7 @@ import kotlinx.coroutines.launch
 
 
 @Database(entities = [MovieEntity::class], version = 1, exportSchema = false)
+@TypeConverters(value = [(RatingsTypeConverter::class)])
 abstract class AppRoomDatabase : RoomDatabase() {
 
     abstract val mMovieDao: MovieDao

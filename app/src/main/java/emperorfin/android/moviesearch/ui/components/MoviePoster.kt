@@ -27,6 +27,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.palette.graphics.Palette
 import com.skydoves.landscapist.palette.BitmapPalette
 import emperorfin.android.moviesearch.temp.Movie
+import emperorfin.android.moviesearch.ui.model.movie.MovieUiModel
 
 
 /*
@@ -37,7 +38,8 @@ import emperorfin.android.moviesearch.temp.Movie
 
 @Composable
 fun MoviePoster(
-    movie: Movie,
+//    movie: Movie,
+    movie: MovieUiModel,
     onClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
