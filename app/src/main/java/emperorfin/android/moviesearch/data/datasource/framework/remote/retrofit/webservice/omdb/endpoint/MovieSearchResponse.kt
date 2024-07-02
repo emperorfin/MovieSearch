@@ -2,7 +2,7 @@ package emperorfin.android.moviesearch.data.datasource.framework.remote.retrofit
 
 import com.squareup.moshi.Json
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable;
+import java.io.Serializable
 import emperorfin.android.moviesearch.data.datasource.framework.remote.retrofit.webservice.omdb.jsonobject.Movie
 
 

@@ -2,6 +2,8 @@ package emperorfin.android.moviesearch.data.datasource.framework.remote.retrofit
 
 import com.squareup.moshi.Json
 import emperorfin.android.moviesearch.data.datasource.framework.remote.retrofit.webservice.omdb.jsonobject.Rating
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 /*
@@ -11,55 +13,80 @@ import emperorfin.android.moviesearch.data.datasource.framework.remote.retrofit.
 
 
 data class MovieDetailsResponse(
-    @Json(name="Title")
+//    @Json(name="Title")
+    @SerializedName("Title")
     val title: String,
-    @Json(name="Year")
+//    @Json(name="Year")
+    @SerializedName("Year")
     val year: String,
-    @Json(name="imdbID")
+//    @Json(name="imdbID")
+    @SerializedName("imdbID")
     val imdbId: String,
-    @Json(name="Type")
+//    @Json(name="Type")
+    @SerializedName("Type")
     val type: String,
-    @Json(name="Poster")
+//    @Json(name="Poster")
+    @SerializedName("Poster")
     val poster: String,
-    @Json(name="Rated")
+//    @Json(name="Rated")
+    @SerializedName("Rated")
     val rated: String,
-    @Json(name="Released")
+//    @Json(name="Released")
+    @SerializedName("Released")
     val released: String,
-    @Json(name="Runtime")
+//    @Json(name="Runtime")
+    @SerializedName("Runtime")
     val runtime: String,
-    @Json(name="Genre")
+//    @Json(name="Genre")
+    @SerializedName("Genre")
     val genre: String,
-    @Json(name="Director")
+//    @Json(name="Director")
+    @SerializedName("Director")
     val director: String,
-    @Json(name="Writer")
+//    @Json(name="Writer")
+    @SerializedName("Writer")
     val writer: String,
-    @Json(name="Actors")
+//    @Json(name="Actors")
+    @SerializedName("Actors")
     val actors: String,
-    @Json(name="Plot")
+//    @Json(name="Plot")
+    @SerializedName("Plot")
     val plot: String,
-    @Json(name="Language")
+//    @Json(name="Language")
+    @SerializedName("Language")
     val language: String,
-    @Json(name="Country")
+//    @Json(name="Country")
+    @SerializedName("Country")
     val country: String,
-    @Json(name="Awards")
+//    @Json(name="Awards")
+    @SerializedName("Awards")
     val awards: String,
-    @Json(name="Metascore")
+//    @Json(name="Metascore")
+    @SerializedName("Metascore")
     val metascore: String,
-    @Json(name="imdbRating")
+//    @Json(name="imdbRating")
+    @SerializedName("imdbRating")
     val imdbRating: String,
-    @Json(name="imdbVotes")
+//    @Json(name="imdbVotes")
+    @SerializedName("imdbVotes")
     val imdbVotes: String,
-    @Json(name="DVD")
+//    @Json(name="DVD")
+    @SerializedName("DVD")
     val dvd: String,
-    @Json(name="BoxOffice")
+//    @Json(name="BoxOffice")
+    @SerializedName("BoxOffice")
     val boxOffice: String,
-    @Json(name="Production")
+//    @Json(name="Production")
+    @SerializedName("Production")
     val production: String,
-    @Json(name="Website")
+//    @Json(name="Website")
+    @SerializedName("Website")
     val website: String,
-    @Json(name="Response")
+//    @Json(name="Response")
+    @SerializedName("Response")
     val response: String,
-    @Json(name="Ratings")
+//    @Json(name="Ratings")
+    @SerializedName("Ratings")
     val ratings: List<Rating>
-)
+) : Serializable
 

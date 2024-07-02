@@ -39,5 +39,6 @@
     <string name="error_fetching_from_remote_and_local">Error fetching from remote and local.</string>
 
     <string name="message_no_internet_loading_cached_movies">No internet connectivity. Loading saved movies…</string>
+    <string name="message_no_internet_searching_cached_movies">No internet connectivity. Searching saved movies…</string>
     <string name="message_no_internet_connectivity">No internet connectivity.</string>
 </resources>

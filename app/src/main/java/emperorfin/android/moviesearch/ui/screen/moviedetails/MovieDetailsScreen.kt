@@ -1,6 +1,7 @@
 package emperorfin.android.moviesearch.ui.screen.moviedetails
 
 import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,6 +19,8 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,19 +34,29 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.palette.graphics.Palette
 import com.google.accompanist.flowlayout.FlowRow
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.palette.BitmapPalette
 import com.skydoves.whatif.whatIfNotNullOrEmpty
 import emperorfin.android.moviesearch.R
+import emperorfin.android.moviesearch.domain.uilayer.event.input.movie.MovieParams
 import emperorfin.android.moviesearch.temp.Movie
-import emperorfin.android.moviesearch.temp.Rating
+//import emperorfin.android.moviesearch.temp.Rating
 import emperorfin.android.moviesearch.temp.SampleMovies
 import emperorfin.android.moviesearch.ui.components.AppBarWithArrow
+import emperorfin.android.moviesearch.ui.components.EmptyContent
+import emperorfin.android.moviesearch.ui.components.LoadingContent
+import emperorfin.android.moviesearch.ui.components.LoadingIndicator
 import emperorfin.android.moviesearch.ui.components.NetworkImage
 import emperorfin.android.moviesearch.ui.components.RatingBar
+import emperorfin.android.moviesearch.ui.model.movie.MovieUiModel
+import emperorfin.android.moviesearch.ui.model.movie.embedded.Rating
 import emperorfin.android.moviesearch.ui.navigation.NavigationActions
+import emperorfin.android.moviesearch.ui.screen.moviedetails.stateholders.MovieDetailsUiState
+import emperorfin.android.moviesearch.ui.screen.moviedetails.stateholders.MovieDetailsViewModel
+import emperorfin.android.moviesearch.ui.screen.movies.stateholders.MoviesViewModel
 import emperorfin.android.moviesearch.ui.theme.Purple40
 import emperorfin.android.moviesearch.ui.theme.background
 
@@ -60,23 +73,29 @@ fun MovieDetailsScreen(
     modifier: Modifier = Modifier,
     context: Context = LocalContext.current,
     navigationActions: NavigationActions?,
-    imdbId: String
+    imdbId: String,
+    viewModel: MovieDetailsViewModel = hiltViewModel(),
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
 
-//    val movie: Movie? by viewModel.movieFlow.collectAsState(initial = null)
+//    val movie: Movie = SampleMovies.getMovies()[1]
 
-//    LaunchedEffect(key1 = imdbId) {
-//        viewModel.fetchMovieDetailsById(imdbId)
-//    }
+    val uiState by viewModel.uiState.collectAsState()
 
-    val movie: Movie = SampleMovies.getMovies()[1]
+    val movie = uiState.movie
+
+    LaunchedEffect(key1 = imdbId) {
+        viewModel.loadMovie(
+            params = MovieParams(imdbId = imdbId),
+            isRefresh = false
+        )
+    }
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             AppBarWithArrow(
-                movie.title,
+                movie?.title,
                 onBackPress = {
                     navigationActions?.navigateBack()
                 }
@@ -87,17 +106,20 @@ fun MovieDetailsScreen(
 
         Content(
             modifier = Modifier.padding(paddingValues),
-            movie = movie
+            imdbId = imdbId,
+            movie = movie,
+            viewModel = viewModel,
+            uiState = uiState
         )
 
         // Check for SnackBar messages to display on the screen
-//        uiState.messageSnackBar?.let { message ->
-//            val snackBarText = stringResource(message)
-//            LaunchedEffect(snackbarHostState, viewModel, message, snackBarText) {
-//                snackbarHostState.showSnackbar(message = snackBarText)
-//                viewModel.snackBarMessageShown()
-//            }
-//        }
+        uiState.messageSnackBar?.let { message ->
+            val snackBarText = stringResource(message)
+            LaunchedEffect(snackbarHostState, viewModel, message, snackBarText) {
+                snackbarHostState.showSnackbar(message = snackBarText)
+                viewModel.snackBarMessageShown()
+            }
+        }
 
     }
 }
@@ -105,31 +127,64 @@ fun MovieDetailsScreen(
 @Composable
 private fun Content(
     modifier: Modifier,
-    movie: Movie
-) {
-
-    Column(
-        modifier = Modifier
-            .verticalScroll(rememberScrollState())
-            .background(background)
-            .fillMaxSize(),
+    imdbId: String,
+    movie: MovieUiModel?,
+    viewModel: MovieDetailsViewModel,
+    uiState: MovieDetailsUiState
     ) {
 
-        Spacer(modifier = Modifier.height(58.dp))
+    val isLoading = uiState.isLoading
+    val errorMessage = uiState.errorMessage
 
-        MovieDetailsHeader(movie)
+    LoadingContent(
+        loading = isLoading,
+        empty = movie == null && !isLoading,
+        emptyContent = {
+            EmptyContent(
+                errorLabel = errorMessage ?: R.string.content_description_error_message,
+                onRetry = {
+                    viewModel.loadMovie(
+                        params = MovieParams(imdbId = imdbId),
+                        isRefresh = false
+                    )
+                }
+            )
+        },
+        loadingIndicator = {
+            LoadingIndicator(modifier = modifier)
+        }
+    ) {
 
-        MovieDetailsSummary(movie)
 
-        MovieDetailsRatings(movie.ratings)
+        movie?.let {
 
-        Spacer(modifier = Modifier.height(24.dp))
+            Column(
+                modifier = Modifier
+                    .verticalScroll(rememberScrollState())
+                    .background(background)
+                    .fillMaxSize(),
+            ) {
+
+                Spacer(modifier = Modifier.height(58.dp))
+
+                MovieDetailsHeader(it)
+
+                MovieDetailsSummary(it)
+
+                MovieDetailsRatings(it.ratings)
+
+                Spacer(modifier = Modifier.height(24.dp))
+            }
+
+        }
+
     }
 }
 
 @Composable
 private fun MovieDetailsHeader(
-    movie: Movie
+//    movie: Movie
+    movie: MovieUiModel
 ) {
 
     Column {
@@ -193,7 +248,8 @@ private fun MovieDetailsHeader(
 
 @Composable
 private fun MovieDetailsSummary(
-    movie: Movie
+//    movie: Movie
+    movie: MovieUiModel
 ) {
 
     val genre: List<String> = movie.genre.split(',')
@@ -266,6 +322,7 @@ private fun Keyword(keyword: String) {
 
 @Composable
 private fun MovieDetailsRatings(
+//    ratings: List<Rating>
     ratings: List<Rating>
 ) {
 

@@ -1,6 +1,8 @@
 package emperorfin.android.moviesearch.data.datasource.framework.remote.retrofit.webservice.omdb.jsonobject
 
 import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 /*
@@ -10,8 +12,10 @@ import com.squareup.moshi.Json
 
 
 data class Rating(
-    @Json(name="Source")
+//    @Json(name="Source")
+    @SerializedName("Source")
     val source: String,
-    @Json(name="Value")
+//    @Json(name="Value")
+    @SerializedName("Value")
     val value: String
-)
+) : Serializable

@@ -255,11 +255,11 @@ private fun Content(
                         movie = movie,
                         onClick = {
 
-                            if (!hasInternetConnection(context.applicationContext as Application)){
-                                Toast.makeText(context, R.string.message_no_internet_connectivity, Toast.LENGTH_SHORT).show()
-
-                                return@MoviePoster
-                            }
+//                            if (!hasInternetConnection(context.applicationContext as Application)){
+//                                Toast.makeText(context, R.string.message_no_internet_connectivity, Toast.LENGTH_SHORT).show()
+//
+//                                return@MoviePoster
+//                            }
 
 //                            navigationActions?.navigateToMovieDetailsScreen(movie.imdbID) // Works
                             navigationActions?.navigateToMovieDetailsScreen(it)

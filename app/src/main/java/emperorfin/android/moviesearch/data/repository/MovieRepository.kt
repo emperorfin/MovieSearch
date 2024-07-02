@@ -75,7 +75,7 @@ data class MovieRepository @Inject constructor(
             if (!forceUpdate) {
 
                 if (params is MovieParams) {
-                    if (cachedMovies?.containsKey(params.imdbRating) == true) {
+                    if (cachedMovies?.containsKey(params.imdbId) == true) {
 
                         val movieCached = cachedMovies?.get(params.imdbId)
 
@@ -93,7 +93,7 @@ data class MovieRepository @Inject constructor(
             (newMovie as? ResultData.Success)?.let { refreshCache(it.data) }
 
             if (params is MovieParams) {
-                if (cachedMovies?.containsKey(params.imdbRating) == true) {
+                if (cachedMovies?.containsKey(params.imdbId) == true) {
 
                     val movieCached = cachedMovies?.get(params.imdbId)
 
@@ -265,6 +265,8 @@ data class MovieRepository @Inject constructor(
     }
 
     private suspend fun refreshLocalDataSource(movies: List<MovieModel>) {
+
+        return // TODO: REMOVE THIS LINE TO REFRESH LOCAL DATA SOURCE
 
         movies.forEach {
             val params = MovieParams(title = it.title)
